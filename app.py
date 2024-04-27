@@ -53,14 +53,12 @@ if st.button("Search")==True:
     embd_query = model.encode(clean_query).tolist()
     query1=collection.query( query_embeddings = embd_query, n_results=10) 
     ele=query1['ids'][0] 
-    lst_ids=remove(ele)
+    lst_ids=remove(ele) 
 
-    response=collection_2.get(ids=lst_ids)
+    for item in lst_ids:
 
-    for item in response['documents']: 
-
-    
-         st.write(item)
+        response=collection_2.get(ids=item)
+        st.write(response['documents'][0])
 
 
 
